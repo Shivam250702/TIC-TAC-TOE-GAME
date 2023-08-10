@@ -1,10 +1,11 @@
-import './App.css';
+// import './App.css';
 import { useEffect } from 'react';
 import { connect, Provider } from 'react-redux';
 import { createStore } from 'redux';
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
-import ParticleBackground from './particleBackground';
+
+import ParticlesBg from 'particles-bg'
 // REDUX: Initial State
 const initial_state = {
   marks: [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -21,6 +22,8 @@ const reducer = (state = initial_state, action) => {
       return {...state, marks: action.payload}
     case 'SET_GAMEOVER':
         return {...state, gameOver: action.payload}  
+        case 'SET_TIE':
+          return {...state, gameOver: true, player: 0};
     default:
       return state;
   }
@@ -35,7 +38,7 @@ function App() {
 
   return (
     <>
-  
+<ParticlesBg type="cobweb" color="#f1ebeb" num={200} bg={true} />
     <h1 className="non">TIC-TAC-TOE GAME</h1>
     
     <div className="App lol">
@@ -89,6 +92,7 @@ function Board({marks, player,gameOver,setGameOver,setMarks,setPlayer}) {
       [0, 4, 8],
       [2, 4, 6],
     ];
+    let isTie = true;
 
     for (let c of combinations) {
       if (marks[c[0]] === 1 && marks[c[1]] === 1 && marks[c[2]] === 1) {
@@ -99,8 +103,10 @@ function Board({marks, player,gameOver,setGameOver,setMarks,setPlayer}) {
         alert('player 2 wins');
         setGameOver(true)
       }
+    
     }
   }, [marks]);
+ 
 
   const changeMark = (i) => {
     const m = [...marks];
@@ -108,7 +114,12 @@ function Board({marks, player,gameOver,setGameOver,setMarks,setPlayer}) {
       m[i] = player;
       setMarks(m);
       setPlayer(player === 1 ? 2 : 1);
-    } else {
+    }
+    else if(gameOver)
+    {
+      alert("GAME IS OVER BRO")
+    } 
+    else {
       alert('please click on empty blocks');
     }
   };

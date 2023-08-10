@@ -5,9 +5,51 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(89deg, #FF5EDF 0%, #04C8DE 100%)
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,900&family=Libre+Baskerville:ital@1&display=swap');
+.Block{
+  width: 150px;
+  height: 150px;
+  border: 5px solid black;
+  background-size: cover;
+  display: inline-block;
+
+}
+.mark1{
+  background-image: url('images/dot.png');
+}
+.mark2 {
+  background-image: url('images/cross.png');
+}
+.lol{
+    right: 33px;
+    z-index: 5555;
+}
+.non{
+  transformX:50%;
+  z-index: 5434;
+}
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding-top: 0px;
+}
+.non{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-bottom: 0px;
+  font-family: 'Bodoni Moda', serif;
+  font-family: 'Libre Baskerville', serif;
+}
+
